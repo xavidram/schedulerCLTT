@@ -21,10 +21,13 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './components/home/home.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatGridListModule, MatListModule, MatCardModule, MatMenuModule, MatIconModule, MatButtonModule } from '@angular/material';
+import { MatGridListModule, MatListModule, MatCardModule, MatMenuModule, MatIconModule, MatButtonModule, MatToolbarModule } from '@angular/material';
 import { CalendarModule } from 'angular-calendar';
 import { CalendarComponent } from './components/calendar/calendar.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
+import { UserspageComponent } from './components/userspage/userspage.component';
+import { Ng2SmartTableModule } from 'ng2-smart-table';
+import { TopbarComponent } from './components/topbar/topbar.component';
 
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(http: HttpClient) {
@@ -39,6 +42,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     SidebarComponent,
     CalendarComponent,
     PageNotFoundComponent,
+    UserspageComponent,
+    TopbarComponent,
   ],
   imports: [
     BrowserModule,
@@ -59,7 +64,9 @@ export function HttpLoaderFactory(http: HttpClient) {
     MatIconModule,
     MatButtonModule,
     MatListModule,
-    CalendarModule.forRoot()
+    CalendarModule.forRoot(),
+    Ng2SmartTableModule,
+    MatToolbarModule
   ],
   providers: [ElectronService],
   bootstrap: [AppComponent]

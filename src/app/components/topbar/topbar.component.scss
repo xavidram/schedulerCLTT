@@ -1,0 +1,12 @@
+:host {
+  min-height: 64px;
+}
+.filler {
+  flex: 1 1 auto;
+}
+mat-icon {
+  margin: 0 0.25em;
+}
+mat-toolbar {
+  border-bottom: thin solid darkgray;
+}

@@ -1,7 +1,36 @@
-
+<div class="header">
+  <mat-toolbar>
+    <mat-toolbar-row class="top">
+      <!-- Left -->
+      <mat-icon>calendar_today</mat-icon>
+      <p>Calendar</p>
+      <!-- Filler -->
+      <span class="filler"></span>
+      <!-- Right -->
+      <button mat-icon-button (click)="view='day'">
+        <mat-icon>view_day</mat-icon>
+      </button>
+      <button mat-icon-button (click)="view='week'">
+        <mat-icon>view_week</mat-icon>
+      </button>
+      <button mat-icon-button (click)="view='month'">
+        <mat-icon>view_module</mat-icon>
+      </button>
+    </mat-toolbar-row>
+    <mat-toolbar-row class="centered">
+      <!-- Middle -->
+      <button mat-icon-button>
+          <mat-icon>keyboard_arrow_left</mat-icon>
+      </button>
+      <h3>June 2018</h3>
+      <button mat-icon-button>
+          <mat-icon>keyboard_arrow_right</mat-icon>
+      </button>
+      <!-- End Middle-->
+    </mat-toolbar-row>
+  </mat-toolbar>
+</div>
 <div [ngSwitch]="view" class="calendar-container">
-  <div class="calendar-header">
-  </div>
     <div class="calendar-content">
       <mwl-calendar-month-view
         *ngSwitchCase="'month'"
