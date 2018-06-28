@@ -19,11 +19,13 @@
     </mat-toolbar-row>
     <mat-toolbar-row class="centered">
       <!-- Middle -->
-      <button mat-icon-button>
+      <button mat-icon-button (click)="changeDateBackward()">
           <mat-icon>keyboard_arrow_left</mat-icon>
       </button>
-      <h3>June 2018</h3>
-      <button mat-icon-button>
+      <h3 *ngIf="view==='month'">{{viewDate | date: 'MMMM yyyy'}}</h3>
+      <h3 *ngIf="view==='week'">Week {{viewDate | date: 'ww of yyyy'}}</h3>
+      <h3 *ngIf="view==='day'">{{viewDate | date: 'fullDate'}}</h3>
+      <button mat-icon-button (click)="changeDateForward()">
           <mat-icon>keyboard_arrow_right</mat-icon>
       </button>
       <!-- End Middle-->
