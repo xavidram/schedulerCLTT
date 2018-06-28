@@ -1,3 +1,4 @@
+import { User } from './../models/user';
 import { Injectable } from '@angular/core';
 
 @Injectable({
@@ -8,10 +9,19 @@ export class AuthService {
   isAuth: boolean;
   isAnAdmin: boolean;
 
-  localUsr = {
+  credentials: {
     email: 'user@local.com',
-    password: 'localpwd'
+    password: 'localpwd',
   };
+
+  localUsr = {
+    id: 4123123,
+    name: 'John Doe',
+    colttid: 'colttjdoe',
+    approle: 'helpdesk',
+    role: 'user',
+    color: 'ffffff'
+  } as User;
 
   constructor() { }
 
@@ -21,7 +31,7 @@ export class AuthService {
    * @param {string} password - User Password
    */
   login(email: string, password: string): boolean {
-    if (this.localUsr.email === email && this.localUsr.password === password) {
+    if (this.credentials.email === email && this.credentials.password === password) {
       this.isAuth = true;
       return true;
     }
@@ -42,5 +52,9 @@ export class AuthService {
 
   get isAdmin(): boolean {
     return true ? this.isAnAdmin : false;
+  }
+
+  get userData(): User {
+    return this.localUsr;
   }
 }
