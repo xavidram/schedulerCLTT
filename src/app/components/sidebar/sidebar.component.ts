@@ -7,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SidebarComponent implements OnInit {
 
+  schedulerToggle = false as boolean;
   constructor() { }
 
   ngOnInit() {

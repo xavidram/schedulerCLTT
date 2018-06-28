@@ -21,13 +21,30 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './components/home/home.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatGridListModule, MatListModule, MatCardModule, MatMenuModule, MatIconModule, MatButtonModule, MatToolbarModule } from '@angular/material';
+// tslint:disable-next-line:max-line-length
+import {
+  MatGridListModule,
+  MatListModule,
+  MatCardModule,
+  MatMenuModule,
+  MatIconModule,
+  MatButtonModule,
+  MatToolbarModule,
+  MatDividerModule,
+  MatExpansionModule,
+} from '@angular/material';
 import { CalendarModule } from 'angular-calendar';
 import { CalendarComponent } from './components/calendar/calendar.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { UserspageComponent } from './components/userspage/userspage.component';
 import { Ng2SmartTableModule } from 'ng2-smart-table';
 import { TopbarComponent } from './components/topbar/topbar.component';
+import { SchedulerComponent } from './components/scheduler/scheduler.component';
+import { AuthService } from './providers/auth.service';
+// Guards
+import { AuthGuard } from './guards/auth.guard';
+import { AdminGuard } from './guards/admin.guard';
+import { LoginComponent } from './components/login/login.component';
 
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(http: HttpClient) {
@@ -44,6 +61,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     PageNotFoundComponent,
     UserspageComponent,
     TopbarComponent,
+    SchedulerComponent,
+    LoginComponent,
   ],
   imports: [
     BrowserModule,
@@ -66,9 +85,16 @@ export function HttpLoaderFactory(http: HttpClient) {
     MatListModule,
     CalendarModule.forRoot(),
     Ng2SmartTableModule,
-    MatToolbarModule
+    MatToolbarModule,
+    MatDividerModule,
+    MatExpansionModule,
   ],
-  providers: [ElectronService],
+  providers: [
+    ElectronService,
+    AuthService,
+    AdminGuard,
+    AuthGuard
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

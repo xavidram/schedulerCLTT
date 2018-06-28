@@ -8,19 +8,55 @@
   <mat-list>
     <mat-list-item>
       <mat-icon matListIcon>dashboard</mat-icon>
-      <h4>Dashboard</h4>
+      <a routerLink="/dashboard">
+        <h3>Dashboard</h3>
+      </a>
     </mat-list-item>
     <mat-list-item>
       <mat-icon matListIcon>people</mat-icon>
-      <a routerLink="/users"><h3>Users</h3></a>
+      <a routerLink="/users">
+        <h3>Users</h3>
+      </a>
     </mat-list-item>
     <mat-list-item>
-        <mat-icon matListIcon>calendar_today</mat-icon>
-        <a routerLink="/calendar"><h3>Calendar</h3></a>
-      </mat-list-item>
-      <mat-list-item>
-          <mat-icon matListIcon>schedule</mat-icon>
-          <h3>Work Schedule</h3>
-        </mat-list-item>
+      <mat-icon matListIcon>calendar_today</mat-icon>
+      <a routerLink="/calendar">
+        <h3>Calendar</h3>
+      </a>
+    </mat-list-item>
+    <mat-list-item>
+      <mat-icon matListIcon>schedule</mat-icon>
+      <a (click)="schedulerToggle=!schedulerToggle">
+        <h3>Scheduler</h3>
+      </a>
+    </mat-list-item>
+    <mat-list-item class="scheduler-submenu" *ngIf="schedulerToggle">
+      New Work Schedules
+    </mat-list-item>
+    <mat-list-item class="scheduler-submenu" *ngIf="schedulerToggle">
+      View Past Schedules
+    </mat-list-item>
+    <mat-list-item>
+      <mat-icon matListIcon>assignment_ind</mat-icon>
+      <a routerLink="myProfile">
+        <h3>Profile</h3>
+      </a>
+    </mat-list-item>
+    <mat-list-item>
+      <mat-icon matListIcon>
+        power_settings_new
+      </mat-icon>
+      <a routerLink="/">
+        <h3>Log Out</h3>
+      </a>
+    </mat-list-item>
+    <mat-list-item>
+      <mat-icon matListIcon>
+        power_settings_new
+      </mat-icon>
+      <a routerLink="/">
+        <h3>Log In</h3>
+      </a>
+    </mat-list-item>
   </mat-list>
 </div>
