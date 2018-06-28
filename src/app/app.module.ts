@@ -19,6 +19,12 @@ import { WebviewDirective } from './directives/webview.directive';
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './components/home/home.component';
+import { SidebarComponent } from './components/sidebar/sidebar.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatGridListModule, MatListModule, MatCardModule, MatMenuModule, MatIconModule, MatButtonModule } from '@angular/material';
+import { CalendarModule } from 'angular-calendar';
+import { CalendarComponent } from './components/calendar/calendar.component';
+import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(http: HttpClient) {
@@ -29,7 +35,10 @@ export function HttpLoaderFactory(http: HttpClient) {
   declarations: [
     AppComponent,
     HomeComponent,
-    WebviewDirective
+    WebviewDirective,
+    SidebarComponent,
+    CalendarComponent,
+    PageNotFoundComponent,
   ],
   imports: [
     BrowserModule,
@@ -42,7 +51,15 @@ export function HttpLoaderFactory(http: HttpClient) {
         useFactory: (HttpLoaderFactory),
         deps: [HttpClient]
       }
-    })
+    }),
+    BrowserAnimationsModule,
+    MatGridListModule,
+    MatCardModule,
+    MatMenuModule,
+    MatIconModule,
+    MatButtonModule,
+    MatListModule,
+    CalendarModule.forRoot()
   ],
   providers: [ElectronService],
   bootstrap: [AppComponent]

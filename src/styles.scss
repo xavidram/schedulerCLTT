@@ -1,7 +1,159 @@
 /* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+@import "../node_modules/angular-calendar/css/angular-calendar.css";
+@import "~@angular/material/theming";
+@include mat-core();
+
 html, body {
   margin: 0;
   padding: 0;
-
+  font-family: 'Roboto', sans-serif;
   height: 100%;
 }
+
+p,h1,h2,h3,h4,h5 {
+  font-family: 'Roboto', sans-serif;
+}
+
+body { margin: 0; }
+
+// APP THEME PALETTE
+$UTRGV-Orange: (
+    50 : #fdece5,
+    100 : #fbcfbd,
+    200 : #f8af91,
+    300 : #f58f65,
+    400 : #f27744,
+    500 : #f05f23,
+    600 : #ee571f,
+    700 : #ec4d1a,
+    800 : #e94315,
+    900 : #e5320c,
+    A100 : #ffffff,
+    A200 : #ffe1dc,
+    A400 : #ffb5a9,
+    A700 : #ff9f90,
+    contrast: (
+        50 : #000000,
+        100 : #000000,
+        200 : #000000,
+        300 : #000000,
+        400 : #000000,
+        500 : #000000,
+        600 : #ffffff,
+        700 : #ffffff,
+        800 : #ffffff,
+        900 : #ffffff,
+        A100 : #000000,
+        A200 : #000000,
+        A400 : #000000,
+        A700 : #000000,
+    )
+);
+
+$UTRGV-Gray: (
+    50 : #ececed,
+    100 : #d1d1d2,
+    200 : #b2b2b4,
+    300 : #939396,
+    400 : #7b7b80,
+    500 : #646469,
+    600 : #5c5c61,
+    700 : #525256,
+    800 : #48484c,
+    900 : #36363b,
+    A100 : #9a9af7,
+    A200 : #6b6bf3,
+    A400 : #2c2cff,
+    A700 : #1313ff,
+    contrast: (
+        50 : #000000,
+        100 : #000000,
+        200 : #000000,
+        300 : #000000,
+        400 : #ffffff,
+        500 : #ffffff,
+        600 : #ffffff,
+        700 : #ffffff,
+        800 : #ffffff,
+        900 : #ffffff,
+        A100 : #000000,
+        A200 : #ffffff,
+        A400 : #ffffff,
+        A700 : #ffffff,
+    )
+);
+
+$UTRGV-Blue: (
+    50 : #e0e5ed,
+    100 : #b3bdd3,
+    200 : #8092b5,
+    300 : #4d6697,
+    400 : #264581,
+    500 : #00246b,
+    600 : #002063,
+    700 : #001b58,
+    800 : #00164e,
+    900 : #000d3c,
+    A100 : #7282ff,
+    A200 : #3f55ff,
+    A400 : #0c28ff,
+    A700 : #001bf1,
+    contrast: (
+        50 : #000000,
+        100 : #000000,
+        200 : #000000,
+        300 : #ffffff,
+        400 : #ffffff,
+        500 : #ffffff,
+        600 : #ffffff,
+        700 : #ffffff,
+        800 : #ffffff,
+        900 : #ffffff,
+        A100 : #000000,
+        A200 : #ffffff,
+        A400 : #ffffff,
+        A700 : #ffffff,
+    )
+);
+
+$UTRGV-Green: (
+    50 : #e0f8e4,
+    100 : #b3edbb,
+    200 : #80e18e,
+    300 : #4dd461,
+    400 : #26cb3f,
+    500 : #00c21d,
+    600 : #00bc1a,
+    700 : #00b415,
+    800 : #00ac11,
+    900 : #009f0a,
+    A100 : #c9ffcb,
+    A200 : #96ff99,
+    A400 : #63ff67,
+    A700 : #4aff4e,
+    contrast: (
+        50 : #000000,
+        100 : #000000,
+        200 : #000000,
+        300 : #000000,
+        400 : #000000,
+        500 : #ffffff,
+        600 : #ffffff,
+        700 : #ffffff,
+        800 : #ffffff,
+        900 : #ffffff,
+        A100 : #000000,
+        A200 : #000000,
+        A400 : #000000,
+        A700 : #000000,
+    )
+);
+
+$primary: mat-palette($UTRGV-Orange);
+$accent: mat-palette($UTRGV-Gray, 50, 200, 900);
+$warn: mat-palette($mat-red);
+
+$theme: mat-light-theme($primary, $accent, $warn);
+
+@include angular-material-theme($theme); // add theme to app

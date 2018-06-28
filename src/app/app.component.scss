@@ -1,0 +1,12 @@
+:host {
+  height: 100%;
+  display: grid;
+  grid-template-columns: 15% 85%;
+}
+:host app-sidebar {
+  border-right: thin solid lightgray;
+}
+.views {
+  padding: 1em;
+  background-color: #eeeeee;
+}
