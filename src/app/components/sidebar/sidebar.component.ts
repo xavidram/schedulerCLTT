@@ -1,3 +1,4 @@
+import { AuthService } from './../../providers/auth.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -8,9 +9,12 @@ import { Component, OnInit } from '@angular/core';
 export class SidebarComponent implements OnInit {
 
   schedulerToggle = false as boolean;
-  constructor() { }
+  isAuthenticated: boolean;
+
+  constructor(private auth: AuthService) { }
 
   ngOnInit() {
+    this.isAuthenticated = this.auth.isAuthenticated;
   }
 
 }

@@ -28,6 +28,14 @@ export class AuthService {
     return false;
   }
 
+  /**
+   * Logs user out Locally
+   */
+  logout() {
+    this.isAuth = false;
+    return false;
+  }
+
   get isAuthenticated(): boolean {
     return true ? this.isAuth : false;
   }
