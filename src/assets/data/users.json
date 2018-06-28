@@ -1,0 +1,59 @@
+[
+  {
+    "name": "Alexa Fletcher",
+    "colttid": "colttafletcher",
+    "department": "COLTT",
+    "approle": "helpdesk",
+    "role": "helpdesk",
+    "color": "C41E1B"
+  }, {
+    "name": "Alyssa Nerio",
+    "colttid": "colttanerio",
+    "department": "COLTT",
+    "approle": "user",
+    "role": "Helpdesk",
+    "color": "FF8C42"
+  }, {
+    "name": "Daniela Almaguer",
+    "colttid": "colttdalmaguer",
+    "department": "COLTT",
+    "approle": "user",
+    "role": "Helpdesk",
+    "color": "1A73CC"
+  }, {
+    "name": "Princess Chavez",
+    "colttid": "colttpchavez",
+    "department": "COLTT",
+    "approle": "user",
+    "role": "Helpdesk",
+    "color": "613F75"
+  }, {
+    "name": "Siria Carasco",
+    "colttid": "colttscarasco",
+    "department": "COLTT",
+    "approle": "user",
+    "role": "Helpdesk",
+    "color": "FFEA4C"
+  }, {
+    "name": "Xavid Ramirez",
+    "colttid": "colttxramirez",
+    "department": "COLTT",
+    "approle": "admin",
+    "role": "Helpdesk Manager",
+    "color": "181918"
+  }, {
+    "name": "Mary Lou Canales",
+    "colttid": "colttmcanales",
+    "department": "COLTT",
+    "approle": "manager",
+    "role": "Helpdesk Manager",
+    "color": "E5446D"
+  }, {
+    "name": "Ruben Zamora",
+    "colttid": "colttrzamora",
+    "department": "COLTT",
+    "approle": "admin",
+    "role": "LMS System Administrator",
+    "color": "679436"
+  }
+]
