@@ -1,0 +1,32 @@
+:host {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.login-form {
+  width: 20%;
+  height: 30%;
+  display: grid;
+  grid-template-rows: 48px auto 48px;
+  text-align: center;
+  -webkit-box-shadow: 0px 8px 40px -9px rgba(0,0,0,0.75);
+  -moz-box-shadow: 0px 8px 40px -9px rgba(0,0,0,0.75);
+  box-shadow: 0px 8px 40px -9px rgba(0,0,0,0.75);
+
+  .header {
+    padding: 0 1em;
+    border-bottom: thin solid gray;
+  }
+  .contents {
+    padding: 0 1em;
+    .mat-form-field {
+      display: block !important;
+    }
+  }
+  button {
+    color: white;
+  }
+}

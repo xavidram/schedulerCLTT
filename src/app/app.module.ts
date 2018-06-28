@@ -3,7 +3,7 @@ import 'reflect-metadata';
 import '../polyfills';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { HttpClientModule, HttpClient } from '@angular/common/http';
 
@@ -32,6 +32,8 @@ import {
   MatToolbarModule,
   MatDividerModule,
   MatExpansionModule,
+  MatFormFieldModule,
+  MatInputModule
 } from '@angular/material';
 import { CalendarModule } from 'angular-calendar';
 import { CalendarComponent } from './components/calendar/calendar.component';
@@ -67,6 +69,7 @@ export function HttpLoaderFactory(http: HttpClient) {
   imports: [
     BrowserModule,
     FormsModule,
+    ReactiveFormsModule,
     HttpClientModule,
     AppRoutingModule,
     TranslateModule.forRoot({
@@ -88,6 +91,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     MatToolbarModule,
     MatDividerModule,
     MatExpansionModule,
+    MatFormFieldModule,
+    MatInputModule
   ],
   providers: [
     ElectronService,

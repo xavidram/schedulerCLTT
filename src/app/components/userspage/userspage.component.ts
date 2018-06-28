@@ -20,7 +20,7 @@ export class UserspageComponent implements OnInit {
         title: 'Full Name'
       },
       colttid: {
-        title: 'COLTT ID' 
+        title: 'COLTT ID'
       },
       department: {
         title: 'Department'
@@ -29,7 +29,7 @@ export class UserspageComponent implements OnInit {
         title: 'Color Code'
       }
     }
-  }
+  };
 
   constructor(private _dataService: DataService) {
     this._dataService.getUserData().subscribe(data => {
