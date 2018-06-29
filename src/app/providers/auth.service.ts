@@ -1,3 +1,4 @@
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { User } from './../models/user';
 import { Injectable } from '@angular/core';
 
@@ -23,27 +24,36 @@ export class AuthService {
     color: 'ffffff'
   } as User;
 
-  constructor() { }
+  COLTTAPI = 'https://testcolttapps.test-utrgv.net/calendar_API/API/';
+  httpOptions = {
+    headers: new HttpHeaders({ 'content-type': 'application/x-www-form-urlencoded' })
+  };
+
+  constructor(private http: HttpClient) { }
 
   /**
    *  Local User Authentication for login
    * @param {string} email - User Email
    * @param {string} password - User Password
    */
-  login(email: string, password: string): boolean {
+  login(email: string, password: string): any {
+    /*
     if (this.credentials.email === email && this.credentials.password === password) {
       this.isAuth = true;
       return true;
     }
     return false;
-  }
-
-  /**
-   * Logs user out Locally
-   */
-  logout() {
-    this.isAuth = false;
-    return false;
+    */
+    return this.http.post(
+      this.COLTTAPI + 'login',
+      { // Data
+        username: email,
+        password: password
+      },
+      { // Options
+        headers: new HttpHeaders({ 'content-type': 'application/x-www-form-urlencoded' })
+      }
+    ).subscribe(console.log);
   }
 
   get isAuthenticated(): boolean {
