@@ -27,11 +27,14 @@ export class LoginComponent implements OnInit {
    * TODO: Swith to API call for token auth
    */
   loginUser() {
+    /*
     if (this.auth.login(this.loginForm.value.email, this.loginForm.value.password)) {
       this.router.navigate(['']);
     } else {
       this.loginForm.reset();
     }
+    */
+   this.auth.login(this.loginForm.vallue.email, this.loginForm.value.password);
   }
 
 }
