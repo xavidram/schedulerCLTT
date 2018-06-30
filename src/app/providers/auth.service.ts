@@ -36,7 +36,7 @@ export class AuthService {
    * @param {string} email - User Email
    * @param {string} password - User Password
    */
-  login(email: string, password: string): any {
+  login(email: string, password: string) {
     /*
     if (this.credentials.email === email && this.credentials.password === password) {
       this.isAuth = true;
@@ -44,16 +44,14 @@ export class AuthService {
     }
     return false;
     */
+    const body = `username=${email}&password=${password}`
     return this.http.post(
       this.COLTTAPI + 'login',
-      { // Data
-        username: email,
-        password: password
-      },
+      body,
       { // Options
         headers: new HttpHeaders({ 'content-type': 'application/x-www-form-urlencoded' })
       }
-    ).subscribe(console.log);
+    );
   }
 
   get isAuthenticated(): boolean {
