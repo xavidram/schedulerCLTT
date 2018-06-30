@@ -1,4 +1,4 @@
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { AuthService } from './../../providers/auth.service';
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
@@ -12,8 +12,9 @@ export class LoginComponent implements OnInit {
 
   @Output() loginEvent = new EventEmitter<boolean>();
   loginForm: FormGroup;
+  returnUrl: string;
 
-  constructor(private formBuilder: FormBuilder, private auth: AuthService, private router: Router) {
+  constructor(private formBuilder: FormBuilder, private auth: AuthService, private router: Router, private route: ActivatedRoute) {
     this.loginForm = this.formBuilder.group({
       'email': ['', Validators.compose([Validators.email, Validators.required])],
       'password': ['', Validators.compose([Validators.required, Validators.minLength(6)])]
@@ -21,6 +22,7 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
   }
 
   /**
@@ -31,7 +33,7 @@ export class LoginComponent implements OnInit {
    this.auth.login(this.loginForm.value.email, this.loginForm.value.password).subscribe(
      () => {
        this.loginEvent.emit(true);
-       this.router.navigate(['']);
+       this.router.navigateByUrl(this.returnUrl);
      }, () => {
        this.loginForm.reset(); // reset all fields
      }
