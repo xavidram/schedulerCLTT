@@ -1,13 +1,19 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { User } from './../models/user';
 import { Injectable } from '@angular/core';
+import * as moment from 'moment';
+
+/** RXJS Operators */
+import 'rxjs/add/operator/do';
+import 'rxjs/add/operator/shareReplay';
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
 
-  isAuth: boolean;
+  private isLoggedIn = new BehaviorSubject<boolean>(false);
   isAnAdmin: boolean;
 
   credentials: {
@@ -44,25 +50,47 @@ export class AuthService {
     }
     return false;
     */
-    const body = `username=${email}&password=${password}`
+    const body = `username=${email}&password=${password}`;
     return this.http.post(
       this.COLTTAPI + 'login',
       body,
       { // Options
         headers: new HttpHeaders({ 'content-type': 'application/x-www-form-urlencoded' })
       }
-    );
+    ).do((res) => this.setSession(res)).shareReplay();
+  }
+
+  /**
+   * Set user Session
+   * @param authResult login querey result
+   */
+  private setSession(authResult) {
+    // set expiration date 2 minute for testing
+    const expiresAt = moment().add(120, 'seconds');
+    localStorage.setItem('token', authResult.auth_token);
+    localStorage.setItem('expires_at', JSON.stringify(expiresAt.valueOf()));
+  }
+
+  /**
+   * Sign User Out, Delete Token
+   */
+  logout() {
+    localStorage.removeItem('token');
+    localStorage.removeItem('expires_at');
+  }
+
+  /**
+   * Get Token Expiration
+   */
+  get expires() {
+    return moment(JSON.parse(localStorage.getItem('expires_At')));
   }
 
   get isAuthenticated(): boolean {
-    return true ? this.isAuth : false;
+    return moment().isBefore(this.expires);
   }
 
   get isAdmin(): boolean {
     return true ? this.isAnAdmin : false;
-  }
-
-  get userData(): User {
-    return this.localUsr;
   }
 }

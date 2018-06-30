@@ -4,7 +4,7 @@
     <mat-icon aria-label="menu toggle">menu</mat-icon>
   </button>
 </div>
-<div class="sidebar-content">
+<div class="sidebar-content" (loginEvent)="receiveLogin($event)">
   <mat-list>
     <mat-list-item>
       <mat-icon matListIcon>dashboard</mat-icon>

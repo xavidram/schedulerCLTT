@@ -1,7 +1,7 @@
 import { Router } from '@angular/router';
 import { AuthService } from './../../providers/auth.service';
-import { Component, OnInit } from '@angular/core';
-import { FormBuilder, Validators } from '@angular/forms';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-login',
@@ -10,7 +10,8 @@ import { FormBuilder, Validators } from '@angular/forms';
 })
 export class LoginComponent implements OnInit {
 
-  loginForm: any;
+  @Output() loginEvent = new EventEmitter<boolean>();
+  loginForm: FormGroup;
 
   constructor(private formBuilder: FormBuilder, private auth: AuthService, private router: Router) {
     this.loginForm = this.formBuilder.group({
@@ -27,18 +28,14 @@ export class LoginComponent implements OnInit {
    * TODO: Swith to API call for token auth
    */
   loginUser() {
-    /*
-    if (this.auth.login(this.loginForm.value.email, this.loginForm.value.password)) {
-      this.router.navigate(['']);
-    } else {
-      this.loginForm.reset();
-    }
-    */
-   this.auth.login(this.loginForm.value.email, this.loginForm.value.password).subscribe((data) => {
-     console.log(data);
-   }, error => {
-     console.log(error);
-   });
+   this.auth.login(this.loginForm.value.email, this.loginForm.value.password).subscribe(
+     () => {
+       this.loginEvent.emit(true);
+       this.router.navigate(['']);
+     }, () => {
+       this.loginForm.reset(); // reset all fields
+     }
+   );
   }
 
 }

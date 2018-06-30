@@ -17,4 +17,9 @@ export class SidebarComponent implements OnInit {
     this.isAuthenticated = this.auth.isAuthenticated;
   }
 
+  receiveLogin($event) {
+    console.log($event);
+    this.isAuthenticated = $event;
+  }
+
 }
