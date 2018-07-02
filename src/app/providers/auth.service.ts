@@ -6,14 +6,15 @@ import * as moment from 'moment';
 /** RXJS Operators */
 import 'rxjs/add/operator/do';
 import 'rxjs/add/operator/shareReplay';
-import { BehaviorSubject } from 'rxjs';
+import 'rxjs/add/operator/share';
+import { BehaviorSubject, Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
 
-  private isLoggedIn = new BehaviorSubject<boolean>(false);
+  private isLoggedInSubject = new BehaviorSubject<boolean>(this.hasToken());
   isAnAdmin: boolean;
 
   credentials: {
@@ -69,14 +70,20 @@ export class AuthService {
     const expiresAt = moment().add(120, 'seconds');
     localStorage.setItem('token', authResult.auth_token);
     localStorage.setItem('expires_at', JSON.stringify(expiresAt.valueOf()));
+    this.isLoggedInSubject.next(true);
+  }
+
+  private hasToken(): boolean {
+    return !!localStorage.getItem('token');
   }
 
   /**
    * Sign User Out, Delete Token
    */
-  logout() {
+  logout(): void {
     localStorage.removeItem('token');
     localStorage.removeItem('expires_at');
+    this.isLoggedInSubject.next(false);
   }
 
   /**
@@ -86,11 +93,12 @@ export class AuthService {
     return moment(JSON.parse(localStorage.getItem('expires_At')));
   }
 
-  get isAuthenticated(): boolean {
-    return moment().isBefore(this.expires);
+  isLoggedIn(): Observable<boolean> {
+    return this.isLoggedInSubject.asObservable().share();
   }
 
-  get isAdmin(): boolean {
-    return true ? this.isAnAdmin : false;
+  isAdmin(): boolean  {
+    return false;
   }
+
 }

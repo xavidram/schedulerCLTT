@@ -1,5 +1,7 @@
 import { AuthService } from './../../providers/auth.service';
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-sidebar',
@@ -9,17 +11,16 @@ import { Component, OnInit } from '@angular/core';
 export class SidebarComponent implements OnInit {
 
   schedulerToggle = false as boolean;
-  isAuthenticated: boolean;
+  isAuthenticated: Observable<boolean>;
 
-  constructor(private auth: AuthService) { }
+  constructor(private auth: AuthService, private router: Router) { }
 
   ngOnInit() {
-    this.isAuthenticated = this.auth.isAuthenticated;
+    this.isAuthenticated = this.auth.isLoggedIn();
   }
 
-  receiveLogin($event) {
-    console.log($event);
-    this.isAuthenticated = $event;
+  logOut() {
+    this.auth.logout();
+    this.router.navigate(['/login']);
   }
-
 }
