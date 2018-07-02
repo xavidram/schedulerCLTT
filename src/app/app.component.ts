@@ -14,6 +14,8 @@ import { AppConfig } from '../environments/environment';
 export class AppComponent {
 
   toggled: boolean;
+  contentWidth: number;
+  contentMargin: number;
   sidenavWidth = 4 as number;
   schedulerToggle = false as boolean;
   isAuthenticated: Observable<boolean>;
@@ -26,7 +28,6 @@ export class AppComponent {
 
     translate.setDefaultLang('en');
     console.log('AppConfig', AppConfig);
-    this.toggled = false;
     if (electronService.isElectron()) {
       console.log('Mode electron');
       console.log('Electron ipcRenderer', electronService.ipcRenderer);
@@ -34,6 +35,10 @@ export class AppComponent {
     } else {
       console.log('Mode web');
     }
+
+    this.toggled = false;
+    this.contentWidth = (window.innerWidth) - (4 * 16); // in pixels
+    this.contentMargin = (4 * 16);
   }
 
   logOut(): void {
@@ -43,10 +48,14 @@ export class AppComponent {
 
   increase(): void {
     this.sidenavWidth = 15;
+    this.contentWidth = (window.innerWidth) - (15 * 16);
+    this.contentMargin = (15 * 16);
   }
 
   decrease(): void {
     this.sidenavWidth = 4;
+    this.contentWidth = (window.innerWidth) - (4 * 16);
+    this.contentMargin = (4 * 15);
   }
 
   toggleSidebar() {

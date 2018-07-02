@@ -39,7 +39,7 @@
       </mat-list-item>
     </mat-list>
   </mat-sidenav>
-  <mat-sidenav-content class="sidebar-content">
+  <mat-sidenav-content class="sidebar-content"  [ngStyle]="{'width.px': contentWidth, 'margin-left': contentMargin + 'px'}">
     <div class="content">
       <app-topbar></app-topbar>
       <div class="views">
