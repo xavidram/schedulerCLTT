@@ -1,0 +1,31 @@
+:host {
+  height: 100%;
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 1em;
+  padding: 1em;
+}
+
+mat-card {
+  padding: 0 0 24px 0 !important;
+  mat-card-title {
+    padding: 24px 0;
+    border-bottom: thin solid lightgray;
+    span {
+      margin-left: 24px;
+    }
+  }
+  mat-card-content {
+    padding: 0 24px;
+    overflow-x: scroll;
+  }
+  mat-list-item {
+    img.avatar {
+      margin-right: 1em;
+    }
+  }
+}
+.recent-activity {
+  grid-column: span 2;
+}

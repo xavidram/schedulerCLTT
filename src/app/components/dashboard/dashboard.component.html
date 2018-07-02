@@ -1,5 +1,29 @@
-<div class="header">
+<div class="active-users">
+  <mat-card>
+    <mat-card-title>
+      <span>Active Users</span>
+    </mat-card-title>
+    <mat-card-content>
+      <mat-list>
+        <mat-list-item *ngFor="let user of activeUsrs">
+          <!-- Placeholder avatar -->
+          <img matListAvatar class="avatar" src="../../../assets//imgs//person_placeholder.png" alt="placeholder avatar">
+          <!-- Person  Name -->
+          <h4 class="name" matLine>{{user.name}}</h4>
+          <!-- Active Since -->
+          <p class="active-since" matLine>Last Active: 8:00 AM</p>
+        </mat-list-item>
+      </mat-list>
+    </mat-card-content>
+  </mat-card>
 </div>
-<div class="content">
-   
+<div class="recent-activity">
+  <mat-card>
+    <mat-card-title>
+      <span>Recent Activity</span>
+    </mat-card-title>
+  </mat-card>
+  <mat-card-content>
+
+  </mat-card-content>
 </div>

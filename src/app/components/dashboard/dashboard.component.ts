@@ -1,3 +1,5 @@
+import { User } from './../../models/user';
+import { DataService } from './../../services/data.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,9 +9,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DashboardComponent implements OnInit {
 
-  constructor() { }
+  activeUsrs: User[];
+
+  constructor(private _dataSevice: DataService) { }
 
   ngOnInit() {
+    this.activeUsrs = this._dataSevice.getActiveUsers();
   }
 
 }
