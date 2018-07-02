@@ -1,10 +1,11 @@
 :host {
   height: 100%;
   display: grid;
-  grid-template-rows: minmax(128px, auto) auto;
+  grid-template-rows: 128px auto;
 }
 .calendar-container {
   background-color: white;
+  height: 100%;
 }
 .filler {
   flex: 1 1 auto;

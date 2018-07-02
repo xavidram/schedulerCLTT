@@ -29,3 +29,12 @@ mat-list {
   height: 100%;
   padding-top: 0px !important;
 }
+.sidebar-content {
+  height: 100%;
+  .content {
+    height: 100%;
+    .views {
+      height: 100%;
+    }
+  }
+}
