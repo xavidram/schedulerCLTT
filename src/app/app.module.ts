@@ -19,7 +19,6 @@ import { WebviewDirective } from './directives/webview.directive';
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './components/home/home.component';
-import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 // tslint:disable-next-line:max-line-length
 import {
@@ -33,7 +32,8 @@ import {
   MatDividerModule,
   MatExpansionModule,
   MatFormFieldModule,
-  MatInputModule
+  MatInputModule,
+  MatSidenavModule
 } from '@angular/material';
 import { CalendarModule } from 'angular-calendar';
 import { CalendarComponent } from './components/calendar/calendar.component';
@@ -47,6 +47,8 @@ import { AuthService } from './providers/auth.service';
 import { AuthGuard } from './guards/auth.guard';
 import { AdminGuard } from './guards/admin.guard';
 import { LoginComponent } from './components/login/login.component';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { ProfileComponent } from './components/profile/profile.component';
 
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(http: HttpClient) {
@@ -58,13 +60,14 @@ export function HttpLoaderFactory(http: HttpClient) {
     AppComponent,
     HomeComponent,
     WebviewDirective,
-    SidebarComponent,
     CalendarComponent,
     PageNotFoundComponent,
     UserspageComponent,
     TopbarComponent,
     SchedulerComponent,
     LoginComponent,
+    DashboardComponent,
+    ProfileComponent,
   ],
   imports: [
     BrowserModule,
@@ -92,6 +95,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     MatDividerModule,
     MatExpansionModule,
     MatFormFieldModule,
+    MatSidenavModule,
     MatInputModule
   ],
   providers: [

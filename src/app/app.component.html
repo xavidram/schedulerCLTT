@@ -1,7 +1,50 @@
-<app-sidebar></app-sidebar>
-<div class="content">
-  <app-topbar></app-topbar>
-  <div class="views">
-    <router-outlet></router-outlet>
-  </div>
-</div>
+<mat-sidenav-container fullscreen>
+  <mat-sidenav mode="side" opened class="sidebar" [ngStyle]="{ 'width.em': sidenavWidth }">
+    <mat-list>
+      <mat-list-item routerLink="/" class="header" (click)="toggleSidebar()">
+        <mat-icon matListIcon>menu</mat-icon>
+        <div *ngIf="sidenavWidth > 6" class="sidebar-item">
+          <h3>COLTT Scheduler</h3>
+        </div>
+      </mat-list-item>
+      <mat-list-item routerLink="/dashboard">
+        <mat-icon matListIcon>dashboard</mat-icon>
+        <div *ngIf="sidenavWidth > 6" class="sidebar-item">
+          <h3>Dashboard</h3>
+        </div>
+      </mat-list-item>
+      <mat-list-item routerLink="calendar">
+        <mat-icon matListIcon>calendar_today</mat-icon>
+        <div *ngIf="sidenavWidth > 6" class="sidebar-item">
+          <h3>Calendar</h3>
+        </div>
+      </mat-list-item>
+      <mat-list-item routerLink="/scheduler">
+        <mat-icon matListIcon>schedule</mat-icon>
+        <div *ngIf="sidenavWidth > 6" class="sidebar-item">
+          <h3>Scheduler</h3>
+        </div>
+      </mat-list-item>
+      <mat-list-item routerLink="/users">
+        <mat-icon matListIcon>people</mat-icon>
+        <div *ngIf="sidenavWidth > 6" class="sidebar-item">
+          <h3>Users</h3>
+        </div>
+      </mat-list-item>
+      <mat-list-item routerLink="">
+        <mat-icon matListIcon></mat-icon>
+        <div *ngIf="sidenavWidth > 6" class="sidebar-item">
+          <h3></h3>
+        </div>
+      </mat-list-item>
+    </mat-list>
+  </mat-sidenav>
+  <mat-sidenav-content class="sidebar-content">
+    <div class="content">
+      <app-topbar></app-topbar>
+      <div class="views">
+        <router-outlet></router-outlet>
+      </div>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>

@@ -1,3 +1,5 @@
+import { ProfileComponent } from './components/profile/profile.component';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { SchedulerComponent } from './components/scheduler/scheduler.component';
 import { HomeComponent } from './components/home/home.component';
 import { CalendarComponent } from './components/calendar/calendar.component';
@@ -15,6 +17,10 @@ const routes: Routes = [
         component: HomeComponent,
         canActivate: [AuthGuard]
     }, {
+        path: 'dashboard',
+        component: DashboardComponent,
+        canActivate: [AuthGuard]
+    }, {
         path: 'calendar',
         component: CalendarComponent,
         canActivate: [AuthGuard]
@@ -25,6 +31,10 @@ const routes: Routes = [
     }, {
         path: 'scheduler',
         component: SchedulerComponent,
+        canActivate: [AuthGuard]
+    }, {
+        path: 'profile',
+        component: ProfileComponent,
         canActivate: [AuthGuard]
     }, {
         path: 'login',
