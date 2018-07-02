@@ -1,7 +1,7 @@
 <mat-sidenav-container fullscreen>
   <mat-sidenav mode="side" opened class="sidebar" [ngStyle]="{ 'width.em': sidenavWidth }">
     <mat-list>
-      <mat-list-item routerLink="/" class="header" (click)="toggleSidebar()">
+      <mat-list-item class="header" (click)="toggleSidebar()">
         <mat-icon matListIcon>menu</mat-icon>
         <div *ngIf="sidenavWidth > 6" class="sidebar-item">
           <h3>COLTT Scheduler</h3>
@@ -31,10 +31,10 @@
           <h3>Users</h3>
         </div>
       </mat-list-item>
-      <mat-list-item routerLink="">
-        <mat-icon matListIcon></mat-icon>
+      <mat-list-item class="logout" (click)="logOut()">
+        <mat-icon matListIcon>exit_to_app</mat-icon>
         <div *ngIf="sidenavWidth > 6" class="sidebar-item">
-          <h3></h3>
+          <h3>Log Out</h3>
         </div>
       </mat-list-item>
     </mat-list>

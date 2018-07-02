@@ -16,10 +16,16 @@ mat-icon {
   color: white;
   margin-right: 0.5em;
 }
-mat-list-item.header {
-  background-color: #383c48;
-  height: 64px;
+mat-list-item {
+  &.header {
+    background-color: #383c48;
+    height: 64px;
+  }
+  &.logout {
+    margin-top: auto;
+  }
 }
 mat-list {
+  height: 100%;
   padding-top: 0px !important;
 }
